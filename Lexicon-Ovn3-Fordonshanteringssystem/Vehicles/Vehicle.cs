@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lexicon_Ovn3_Fordonshanteringssystem
+namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
 {
-    public class Vehicle
+    public abstract class Vehicle
     {
         private string brand;
         private string model;
