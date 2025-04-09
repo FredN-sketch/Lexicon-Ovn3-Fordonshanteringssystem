@@ -14,13 +14,21 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
          Ändra värden (t.ex. sätt vikt, modell etc.) 
          Lista fordon.         
          */
-        public static Vehicle AddVehicle(string brand, string model, int year, double weight)
-        {
-            var vehicle = new Vehicle(brand, model, year, weight);
-            return vehicle;
-        }
+        //public static Vehicle AddVehicle(string brand, string model, int year, double weight)
+        //{
+        //    var vehicle = new Vehicle(brand, model, year, weight);
+        //    return vehicle;
+        //}
         public static Vehicle AddVehicle()
         {
+            Console.WriteLine("Lägg till fordon");
+            Console.WriteLine("================");
+            Console.WriteLine("1. Bil");
+            Console.WriteLine("2. Elektrisk skoter");
+            Console.WriteLine("3. Motorcykel");
+            Console.WriteLine("4. Lastbil");
+            string fordonsTyp = Console.ReadLine();
+            
             Console.Write("Ange fabrikat: ");
             string brand = Console.ReadLine();
             Console.Write("Ange modell: ");
@@ -29,8 +37,44 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
             int year = int.Parse(Console.ReadLine());
             Console.Write("Ange vikt: ");
             double weight = double.Parse(Console.ReadLine());
-            var vehicle = new Vehicle(brand, model, year, weight);
-            return vehicle;
+            switch (fordonsTyp) 
+            {
+                case "1": 
+                    {
+                        Console.Write("Ange antal dörrar: ");
+                        int numberOfDoors = int.Parse(Console.ReadLine());
+                        var vehicle = new Car(brand, model, year, weight, numberOfDoors);
+                        return vehicle;
+                    }
+                 case "2":
+                    {
+                        Console.Write("Ange batterikapacitet: ");
+                        int batteryRange = int.Parse(Console.ReadLine());
+                        var vehicle = new ElectricScooter(brand, model, year, weight, batteryRange);
+                        return vehicle;
+                    }
+                case "3":
+                    {
+                        bool hasSidecar = bool.Parse(Console.ReadLine());
+                        var vehicle = new Motorcycle(brand, model, year, weight, hasSidecar );
+                        return vehicle;
+                    }
+                case "4":
+                    {
+                        int batteryRange = int.Parse(Console.ReadLine());
+                        var vehicle = new ElectricScooter(brand, model, year, weight, batteryRange);
+                        return vehicle;
+                    }
+
+                default:
+                    {
+                        return null;
+                        //break;                    
+                    }
+                    
+            }
+         //   var vehicle = new Vehicle(brand, model, year, weight);
+        //    return vehicle;
         }
 
         public static void SetBrand(Vehicle vehicle)
