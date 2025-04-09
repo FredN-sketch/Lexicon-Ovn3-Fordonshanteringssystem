@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
 {
-    internal class Car : Vehicle
+    internal class Car : Vehicle, ICleanable
     {
         public int NumberOfDoors { get; set; }
         public Car(string brand, string model, int year, double weight, int numberOfDoors) : base(brand, model, year, weight)
@@ -16,6 +16,10 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         public override void StartEngine()
         {
             Console.WriteLine("Bilen startar...");
+        }
+        void ICleanable.Clean()
+        {
+            Console.WriteLine("Tvättar bilen!");
         }
     }
 }
