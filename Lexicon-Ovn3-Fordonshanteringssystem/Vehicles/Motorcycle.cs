@@ -15,5 +15,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             HasSideCar = hassidecar;    
         }
+        public override void StartEngine()
+        {
+            Console.WriteLine("Motorcykeln startar...");
+        }
     }
 }

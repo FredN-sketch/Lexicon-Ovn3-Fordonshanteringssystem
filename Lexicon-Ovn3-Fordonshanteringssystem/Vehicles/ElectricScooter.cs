@@ -13,5 +13,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             BatteryRange = batteryRange;        
         }
+        public override void StartEngine()
+        {
+            Console.WriteLine("Skotern startar...");
+        }
     }
 }

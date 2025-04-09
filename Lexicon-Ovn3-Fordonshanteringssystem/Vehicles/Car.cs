@@ -13,5 +13,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             NumberOfDoors = numberOfDoors;
         }
+        public override void StartEngine()
+        {
+            Console.WriteLine("Bilen startar...");
+        }
     }
 }

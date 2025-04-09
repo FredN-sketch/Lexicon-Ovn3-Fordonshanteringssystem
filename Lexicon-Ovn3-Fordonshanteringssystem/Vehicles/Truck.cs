@@ -13,6 +13,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             CargoCapacity = cargoCapacity;
         }
-
+        public override void StartEngine()
+        {
+            Console.WriteLine("Lastbilen startar...");
+        }
     }
 }

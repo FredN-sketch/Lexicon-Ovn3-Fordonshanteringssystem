@@ -77,6 +77,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             return $"Fabrikat: {Brand}\t\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}";
         }
+        public abstract void StartEngine();
         public Vehicle(string brand, string model, int year, double weight)
         {
             Brand = brand;
