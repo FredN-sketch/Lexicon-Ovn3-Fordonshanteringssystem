@@ -29,54 +29,84 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
             Console.WriteLine("4. Lastbil");
             string fordonsTyp = Console.ReadLine();
             
-            Console.Write("Ange fabrikat: ");
+            Console.Write("Fabrikat: ");
             string brand = Console.ReadLine();
-            Console.Write("Ange modell: ");
+            Console.Write("Modell: ");
             string model = Console.ReadLine();
-            Console.Write("Ange årtal: ");
+            Console.Write("Årtal: ");
             int year = int.Parse(Console.ReadLine());
-            Console.Write("Ange vikt: ");
+            Console.Write("Vikt: ");
             double weight = double.Parse(Console.ReadLine());
             switch (fordonsTyp) 
             {
                 case "1": 
                     {
-                        Console.Write("Ange antal dörrar: ");
+                     //   Vehicle temp = new Vehicle();
+                        Console.Write("Antal dörrar: ");
                         int numberOfDoors = int.Parse(Console.ReadLine());
                         var vehicle = new Car(brand, model, year, weight, numberOfDoors);
+                        //   break;
                         return vehicle;
+
                     }
                  case "2":
                     {
-                        Console.Write("Ange batterikapacitet: ");
+                        Console.Write("Batterikapacitet: ");
                         int batteryRange = int.Parse(Console.ReadLine());
                         var vehicle = new ElectricScooter(brand, model, year, weight, batteryRange);
+                        //break;
                         return vehicle;
                     }
                 case "3":
                     {
+                        Console.Write("Sidovagn (true/false): ");
                         bool hasSidecar = bool.Parse(Console.ReadLine());
                         var vehicle = new Motorcycle(brand, model, year, weight, hasSidecar );
+                        //break;
                         return vehicle;
                     }
                 case "4":
                     {
-                        int batteryRange = int.Parse(Console.ReadLine());
-                        var vehicle = new ElectricScooter(brand, model, year, weight, batteryRange);
+                        Console.Write("Lastkapacitet: ");
+                        int cargoCapacity = int.Parse(Console.ReadLine());
+                        var vehicle = new Truck(brand, model, year, weight, cargoCapacity);
+                        //break;
                         return vehicle;
                     }
 
                 default:
                     {
+                        //return null;
+                        Console.WriteLine("Ogiltigt val");
+                        //break;
                         return null;
-                        //break;                    
                     }
-                    
-            }
-         //   var vehicle = new Vehicle(brand, model, year, weight);
-        //    return vehicle;
-        }
 
+            }
+            Console.ReadLine();
+            //   var vehicle = new Vehicle(brand, model, year, weight);
+               //return vehicle;
+        }
+        public static void SetCargoCapacity(Vehicle vehicle)
+        {
+            Console.Write("Lastkapacitet: ");
+            ((Truck)vehicle).CargoCapacity = int.Parse(Console.ReadLine());
+        }
+        public static void SetHasSideCar(Vehicle vehicle)
+        {
+            Console.Write("Har sidovagn (true/false): ");
+            ((Motorcycle)vehicle).HasSideCar = bool.Parse(Console.ReadLine());
+        }
+        public static void SetBatteryRange(Vehicle vehicle)
+        {
+            Console.Write("Batterikapacitet: ");
+            ((ElectricScooter)vehicle).BatteryRange = int.Parse(Console.ReadLine());
+        }
+        public static void SetNumberofDoors(Vehicle vehicle)
+        {
+            Console.Write("Antal dörrar: ");
+            ((Car)vehicle).NumberOfDoors = int.Parse(Console.ReadLine());
+        }
         public static void SetBrand(Vehicle vehicle)
         {
             Console.Write("Fabrikat: ");

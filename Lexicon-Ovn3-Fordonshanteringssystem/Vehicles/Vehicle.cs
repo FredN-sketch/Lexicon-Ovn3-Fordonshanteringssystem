@@ -12,7 +12,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         private string model;
         private int year;
         private double weight;
-
+        public string Type { get; set; }
         public string Brand
         {
             get { return brand; }
@@ -78,8 +78,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
             return $"Fabrikat: {Brand}\t\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}";
         }
         public abstract void StartEngine();
-        public Vehicle(string brand, string model, int year, double weight)
+        public Vehicle(string type, string brand, string model, int year, double weight)
         {
+            Type = type;
             Brand = brand;
             Model = model;
             Year = year;

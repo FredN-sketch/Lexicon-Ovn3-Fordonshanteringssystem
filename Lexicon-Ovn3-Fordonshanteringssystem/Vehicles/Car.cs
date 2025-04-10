@@ -9,7 +9,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
     internal class Car : Vehicle, ICleanable
     {
         public int NumberOfDoors { get; set; }
-        public Car(string brand, string model, int year, double weight, int numberOfDoors) : base(brand, model, year, weight)
+        public Car(string brand, string model, int year, double weight, int numberOfDoors) : base("Car", brand, model, year, weight)
         {
             NumberOfDoors = numberOfDoors;
         }

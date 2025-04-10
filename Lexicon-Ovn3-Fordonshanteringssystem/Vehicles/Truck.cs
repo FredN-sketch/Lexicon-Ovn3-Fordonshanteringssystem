@@ -9,7 +9,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
     internal class Truck : Vehicle, ICleanable
     {
         public int CargoCapacity { get; set; }
-        public Truck(string brand, string model, int year, double weight, int cargoCapacity) : base(brand, model, year, weight)
+        public Truck(string brand, string model, int year, double weight, int cargoCapacity) : base("Truck", brand, model, year, weight)
         {
             CargoCapacity = cargoCapacity;
         }
