@@ -23,25 +23,8 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Helpers
             Console.WriteLine("Skriv in siffran till vänster om varje menyval för att köra resp funktion");
             Console.Write(Environment.NewLine);
         }
-        public static bool MainMenu()
-        {
-            string userInput = Console.ReadLine();
-            switch (userInput)
-            {
-                case "0":                                       // 0. Avsluta
-                    {
-                        return false;
-                    }
-
-                default:
-                    {                                           // om användaren matat in något annat än menyvalen
-                        Console.WriteLine("Ogiltigt val");
-                        PressAnyKey();
-                        return true;
-                    }
-            }                 
-        }
-          private static void PressAnyKey()
+        
+          public static void PressAnyKey()
         {
             Console.Write(Environment.NewLine);
             Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn.");

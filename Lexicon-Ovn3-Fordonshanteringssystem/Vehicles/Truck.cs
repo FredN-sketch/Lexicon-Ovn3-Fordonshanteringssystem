@@ -21,5 +21,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             Console.WriteLine("Tvättar lastbilen!");
         }
+        public override string ToString()
+        {
+            return $"Typ: {Type}\tFabrikat: {Brand}\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}\tLastkapacitet: {CargoCapacity}";
+        }
     }
 }

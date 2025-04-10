@@ -13,6 +13,10 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             BatteryRange = batteryRange;        
         }
+        public override string ToString()
+        {
+            return $"Typ: {Type}\tFabrikat: {Brand}\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}\tBatterikapacitet: {BatteryRange}";
+        }
         public override void StartEngine()
         {
             Console.WriteLine("Skotern startar...");

@@ -13,6 +13,10 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             NumberOfDoors = numberOfDoors;
         }
+        public override string ToString()
+        {
+            return $"Typ: {Type}\tFabrikat: {Brand}\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}\tAntal dörrar: {NumberOfDoors}";
+        }
         public override void StartEngine()
         {
             Console.WriteLine("Bilen startar...");

@@ -19,5 +19,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             Console.WriteLine("Motorcykeln startar...");
         }
+        public override string ToString()
+        {
+            return $"Typ: {Type}\tFabrikat: {Brand}\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}\tSidovagn: {HasSideCar}";
+        }
     }
 }

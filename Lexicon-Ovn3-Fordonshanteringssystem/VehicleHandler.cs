@@ -128,5 +128,10 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
             Console.Write("Vikt: ");
             vehicle.Weight = double.Parse(Console.ReadLine());
         }
+
+        internal static void EditVehicle(Vehicle myVehicle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
