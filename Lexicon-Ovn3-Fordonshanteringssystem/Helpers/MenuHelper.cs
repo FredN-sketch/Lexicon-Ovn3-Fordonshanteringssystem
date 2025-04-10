@@ -13,11 +13,9 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Helpers
             Console.Clear();
             Console.WriteLine("Fordonshantering");
             Console.WriteLine("================");
-            Console.WriteLine("1. Lägg till fordon manuellt");
-            Console.WriteLine("1b. Lägg till fordon automatiskt");
-            Console.WriteLine("2. Visa fordon");
-            Console.WriteLine("3. Lägg till fel");
-            Console.WriteLine("4. Visa fellista");            
+            Console.WriteLine("1. Lägg till fordon manuellt");            
+            Console.WriteLine("2. Visa fordonslista");
+            Console.WriteLine("3. Generera fel och visa fellista");                        
             Console.WriteLine("0. Avsluta");
             Console.Write(Environment.NewLine);
             Console.WriteLine("Skriv in siffran till vänster om varje menyval för att köra resp funktion");
