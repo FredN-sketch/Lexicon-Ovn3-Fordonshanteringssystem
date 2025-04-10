@@ -21,7 +21,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             Console.WriteLine("Bilen startar...");
         }
-        void ICleanable.Clean()
+        public void Clean()
         {
             Console.WriteLine("Tvättar bilen!");
         }

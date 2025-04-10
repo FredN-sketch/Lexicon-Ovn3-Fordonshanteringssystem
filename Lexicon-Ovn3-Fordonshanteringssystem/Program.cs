@@ -89,6 +89,15 @@ internal class Program
                     foreach (var vehicle in vehicles)
                     {
                         Console.WriteLine(vehicle);
+                        vehicle.StartEngine();
+                        if (vehicle is ICleanable)
+                        {
+                            if (vehicle is Car)             
+                                ((Car)vehicle).Clean();     // Det måste finnas bättre sätt...
+                            else if (vehicle is Truck)
+                                ((Truck)vehicle).Clean();   
+                        }                         
+                            
                     }
                     Console.ReadLine() ;    
                     return true;
@@ -113,12 +122,13 @@ internal class Program
     }
     private static List<Vehicle> SeedData()
     {
-        Vehicle car1 = new Car("Volvo", "245", 1985, 2, 5);
-        Vehicle car2 = new Car("Saab", "99", 1979, 2, 4);
-        Vehicle truck = new Truck("Volvo", "FH", 2024, 4, 12);
-        Vehicle scoot = new ElectricScooter("Ola", "S1", 2022, 0.1, 3);
-        Vehicle mc = new Motorcycle("Kawasaki", "Z650", 2022, 0.2, false);
+        Car car1 = new Car("Volvo", "245", 1985, 2, 5);
+        Car car2 = new Car("Saab", "99", 1979, 2, 4);
+        Truck truck = new Truck("Volvo", "FH", 2024, 4, 12);
+        ElectricScooter scoot = new ElectricScooter("Ola", "S1", 2022, 0.1, 3);
+        Motorcycle mc = new Motorcycle("Kawasaki", "Z650", 2022, 0.2, false);
         List<Vehicle> vehicles = new List<Vehicle>() { car1, car2, truck, scoot, mc };
+        
         return vehicles;
     }
 }

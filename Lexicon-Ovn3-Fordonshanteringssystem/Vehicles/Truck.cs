@@ -17,7 +17,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         {
             Console.WriteLine("Lastbilen startar...");
         }
-        void ICleanable.Clean()
+        public void Clean()
         {
             Console.WriteLine("Tvättar lastbilen!");
         }

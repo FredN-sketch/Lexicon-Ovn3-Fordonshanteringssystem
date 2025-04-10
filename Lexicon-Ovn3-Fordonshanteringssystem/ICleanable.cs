@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lexicon_Ovn3_Fordonshanteringssystem
 {
-    interface ICleanable
+    public interface ICleanable
     {
-        void Clean();
+        public void Clean();
     }
 }

@@ -90,7 +90,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
         public static void SetCargoCapacity(Vehicle vehicle)
         {
             Console.Write("Lastkapacitet: ");
-            ((Truck)vehicle).CargoCapacity = int.Parse(Console.ReadLine());
+            ((Truck)vehicle).CargoCapacity = int.Parse(Console.ReadLine());       
         }
         public static void SetHasSideCar(Vehicle vehicle)
         {
