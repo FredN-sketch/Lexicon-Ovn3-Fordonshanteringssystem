@@ -73,10 +73,7 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
                 }
             }
         }
-        //public override string ToString()
-        //{
-        //    return $"Fabrikat: {Brand}\t\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}";
-        //}
+        
         public abstract void StartEngine();
         public void Stats()
         {

@@ -17,8 +17,11 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem;
 
 internal class Program
 {
+    private static VehicleList vehicleList = new VehicleList();
+    
     static void Main(string[] args)
-    {       
+    {
+     //   SeedData();
         bool showMenu = true;
         while (showMenu)
         {
@@ -26,14 +29,13 @@ internal class Program
             showMenu = MainMenu();
         }    
     }
-
-    //Console.WriteLine("Fordonshantering");
-    //Console.WriteLine("================");
-    //Console.WriteLine("1. Lägg till fordon manuellt");
-    //Console.WriteLine("2. Visa fordon");
-    //Console.WriteLine("3. Skapa och visa fellista");
-    //Console.WriteLine("4. Visa fellista");            
-    //Console.WriteLine("0. Avsluta");
+        
+    //1. Lägg till fordon manuellt
+    //2. Lägg till fordon automatiskt (färdiga exempel)
+    //3. Visa fordonslista
+    //4. Generera fel och visa fellista (10 slumpmässiga fel)                        
+    //0. Avsluta
+    
     public static bool MainMenu()
     {
         try
@@ -46,17 +48,17 @@ internal class Program
                         MenuAddVehicle();
                         return true;
                     }
-                //case "1b":                                       // 1b. Lägg till fordon automatiskt
-                //    {
-                //        SeedData();
-                //        return true;
-                //    }
-                case "2":                                       // 2. Visa fordon
+                case "2":                                       // 2. Lägg till fordon automatiskt (färdiga exempel)
+                    {
+                        SeedData();
+                        return true;
+                    }
+                case "3":                                       // 3. Visa fordon
                     {
                         MenuListVehicles();                        
                         return true;
                     }
-                case "3":                                       // 3. Fellista. Skapar och skriver ut en lista med 10 slumpmässiga fel
+                case "4":                                       // 4. Generera fel och visa fellista (10 slumpmässiga fel)
                     {
                         MenuListErrors();
                         return true;
@@ -79,20 +81,18 @@ internal class Program
             Console.ReadLine();
             return true;
         }
-
     }
 
     private static void MenuAddVehicle()
     {
         string userInput;
         Vehicle myVehicle = VehicleHandler.AddVehicle();
+        vehicleList.AddToVehicleList(myVehicle);
 
         bool andraEgenskap = true;
         while (andraEgenskap) 
         {
-            myVehicle.Stats();
-           // Console.WriteLine(myVehicle);
-
+            myVehicle.Stats();         
             Console.Write("Vill du ändra på någon egenskap? (ja/nej): ");
             userInput = Console.ReadLine();
             if (userInput == "ja")
@@ -143,28 +143,21 @@ internal class Program
                         VehicleHandler.SetUniqueProperty(myVehicle);
                         break;
                     default: break;
-                }
-                //Console.WriteLine(myVehicle);
-                //Console.Write("Vill du ändra på någon egenskap? (ja/nej): ");
-                //userInput = Console.ReadLine();
+                }                
             }
             else
-                andraEgenskap = false;
-            // VehicleHandler.EditVehicle(myVehicle);
+                andraEgenskap = false;            
         }
-
-
-
     }
 
     private static void MenuListVehicles()
-    {
-        List<Vehicle> vehicles = SeedData();
+    {        
+        var vehicles = vehicleList.GetVehicles();
         foreach (Vehicle vehicle in vehicles)
         {
-            vehicle.Stats();
-            //Console.WriteLine(vehicle);
+            vehicle.Stats();            
             vehicle.StartEngine();
+
             if (vehicle is ICleanable)
             {
                 if (vehicle is Car)
@@ -197,17 +190,20 @@ internal class Program
         Console.ReadLine();
     }
 
-    private static List<Vehicle> SeedData()
+    private static void SeedData() 
     {
         Car car1 = new Car("Volvo", "245", 1985, 2, 5);
         Car car2 = new Car("Saab", "99", 1979, 2, 4);
         Truck truck = new Truck("Volvo", "FH", 2024, 4, 12);
         ElectricScooter scoot = new ElectricScooter("Ola", "S1", 2022, 0.1, 3);
         Motorcycle mc = new Motorcycle("Kawasaki", "Z650", 2022, 0.2, false);
-        List<Vehicle> vehicles = new List<Vehicle>() { car1, car2, truck, scoot, mc };
-        //List<Motorcycle> mcs = new List<Motorcycle> { mc, car1 }; // kan ej lägga till car1 i List<Motorcycle>
         
-        return vehicles;
+        vehicleList.AddToVehicleList(car1);
+        vehicleList.AddToVehicleList(car2);
+        vehicleList.AddToVehicleList(truck);
+        vehicleList.AddToVehicleList(scoot);
+        vehicleList.AddToVehicleList(mc);
+        //List<Motorcycle> mcs = new List<Motorcycle> { mc, car1 }; // kan ej lägga till car1 i List<Motorcycle>       
     }
 }
 
