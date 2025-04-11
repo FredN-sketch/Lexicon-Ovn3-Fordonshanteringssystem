@@ -82,12 +82,7 @@ internal class Program
                     }
                 case "1":                                       // 1. Lägg till fordon manuellt
                     {
-                        Vehicle myVehicle = VehicleHandler.AddVehicle();
-                        Console.WriteLine(myVehicle);
-                        Console.Write("Vill du ändra på någon uppgift? (ja/nej): ");
-                        userInput = Console.ReadLine();
-                        if (userInput == "ja")
-                            VehicleHandler.EditVehicle(myVehicle);
+                        MenuAddVehicle();
                         return true;
                     }
                 case "1b":                                       // 1b. Lägg till fordon automatiskt
@@ -98,25 +93,26 @@ internal class Program
                 case "2":                                       // 2. Visa fordon
                     {
                         List<Vehicle> vehicles = SeedData();
-                        foreach (var vehicle in vehicles)
+                        foreach (Vehicle vehicle in vehicles)
                         {
-                            Console.WriteLine(vehicle);
+                            vehicle.Stats();
+                            //Console.WriteLine(vehicle);
                             vehicle.StartEngine();
                             if (vehicle is ICleanable)
                             {
                                 if (vehicle is Car)
-                                    ((Car)vehicle).Clean();     // Det måste finnas bättre sätt...
+                                    ((Car)vehicle).Clean();     //cast för att kunna anropa Clean i Car
                                 else if (vehicle is Truck)
-                                    ((Truck)vehicle).Clean();
+                                    ((Truck)vehicle).Clean();   //cast för att kunna anropa Clean i Truck
                             }
 
                         }
                         Console.ReadLine();
                         return true;
                     }
-                case "3":                                       // 3. Fellista
+                case "3":                                       // 3. Fellista. Skapar och skriver ut en lista med 10 slumpmässiga fel
                     {
-                        List<SystemError> systemfel = new List<SystemError>();
+                        List<SystemError> systemfel = new List<SystemError>(); 
                         for (int i = 0; i < 10; i++)
                         {
                             int slumpfel = Random.Shared.Next(1, 3 + 1);
@@ -133,12 +129,7 @@ internal class Program
                         }
                         Console.ReadLine();
                         return true;
-                    }
-                //case "4":                                       // 4. Visa fellista
-                //    {
-                //        return true;
-                //    }
-
+                    }               
 
                 default:
                     {                                           // om användaren matat in något annat än menyvalen
@@ -156,6 +147,82 @@ internal class Program
         }
 
     }
+
+    private static void MenuAddVehicle()
+    {
+        string userInput;
+        Vehicle myVehicle = VehicleHandler.AddVehicle();
+
+        bool andraEgenskap = true;
+        while (andraEgenskap) 
+        {
+            myVehicle.Stats();
+           // Console.WriteLine(myVehicle);
+
+            Console.Write("Vill du ändra på någon egenskap? (ja/nej): ");
+            userInput = Console.ReadLine();
+            if (userInput == "ja")
+            {
+                string unikEgenskap = "";
+                switch (myVehicle.Type)
+                {
+                    case "Car":
+                        unikEgenskap = "Antal dörrar";
+                        break;
+                    case "ElectricScooter":
+                        unikEgenskap = "Batterikapacitet";
+                        break;
+                    case "Motorcycle":
+                        unikEgenskap = "Sidovagn";
+                        break;
+                    case "Truck":
+                        unikEgenskap = "Lastkapacitet";
+                        break;
+                    default: break;
+                }
+                Console.WriteLine("Ändra egenskap");
+                Console.WriteLine("==============");
+                Console.WriteLine("1. Fabrikat");
+                Console.WriteLine("2. Modell");
+                Console.WriteLine("3. Årtal");
+                Console.WriteLine("4. Vikt");
+                Console.WriteLine($"5. {unikEgenskap}");
+                Console.Write(Environment.NewLine);
+                Console.WriteLine("Skriv in siffran till vänster om varje menyval för att ändra resp egenskap");
+                Console.Write(Environment.NewLine);
+                userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case ("1"):
+                        VehicleHandler.SetBrand(myVehicle);
+                        break;
+                    case ("2"):
+                        VehicleHandler.SetModel(myVehicle);
+                        break;
+                    case ("3"):
+                        VehicleHandler.SetYear(myVehicle);
+                        break;
+                    case ("4"):
+                        VehicleHandler.SetWeight(myVehicle);
+                        break;
+                    case ("5"):
+                        VehicleHandler.SetUniqueProperty(myVehicle);
+                        break;
+                    default: break;
+                }
+                //Console.WriteLine(myVehicle);
+                //Console.Write("Vill du ändra på någon egenskap? (ja/nej): ");
+                //userInput = Console.ReadLine();
+            }
+            else
+                andraEgenskap = false;
+            // VehicleHandler.EditVehicle(myVehicle);
+        }
+
+
+
+    }
+
     private static List<Vehicle> SeedData()
     {
         Car car1 = new Car("Volvo", "245", 1985, 2, 5);

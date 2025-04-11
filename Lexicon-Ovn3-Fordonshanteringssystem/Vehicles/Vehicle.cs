@@ -78,6 +78,10 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem.Vehicles
         //    return $"Fabrikat: {Brand}\t\tModell: {Model}\tÅr: {Year}\t Vikt: {Weight}";
         //}
         public abstract void StartEngine();
+        public void Stats()
+        {
+            Console.WriteLine(this);
+        }
         public Vehicle(string type, string brand, string model, int year, double weight)
         {
             Type = type;

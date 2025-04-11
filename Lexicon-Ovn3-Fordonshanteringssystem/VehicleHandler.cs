@@ -87,6 +87,17 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
             //   var vehicle = new Vehicle(brand, model, year, weight);
                //return vehicle;
         }
+        public static void SetUniqueProperty(Vehicle vehicle)
+        {
+            if (vehicle is Car)
+                SetNumberofDoors(vehicle);
+            else if (vehicle is ElectricScooter)
+                SetBatteryRange(vehicle);
+            else if (vehicle is Motorcycle)
+                SetHasSideCar(vehicle);
+            else if (vehicle is Truck)
+                SetCargoCapacity(vehicle);
+        }
         public static void SetCargoCapacity(Vehicle vehicle)
         {
             Console.Write("Lastkapacitet: ");
