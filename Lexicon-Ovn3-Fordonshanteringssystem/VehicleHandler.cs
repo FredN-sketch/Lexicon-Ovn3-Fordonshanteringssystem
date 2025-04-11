@@ -36,7 +36,6 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
                             int numberOfDoors = int.Parse(Console.ReadLine());
                             var vehicle = new Car(brand, model, year, weight, numberOfDoors);
                             return vehicle;
-
                         }
                     case 2:
                         {
@@ -59,13 +58,11 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
                             var vehicle = new Truck(brand, model, year, weight, cargoCapacity);
                             return vehicle;
                         }
-
                     default:
                         {                          
                             return null;                                                
                         }
                 }
-
             }
             else
                 throw new ArgumentException("Ogiltigt val");
@@ -122,11 +119,6 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
         {
             Console.Write("Vikt: ");
             vehicle.Weight = double.Parse(Console.ReadLine());
-        }
-
-        internal static void EditVehicle(Vehicle myVehicle)
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }
