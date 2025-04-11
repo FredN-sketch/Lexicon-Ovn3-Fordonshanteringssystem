@@ -1,4 +1,6 @@
-﻿using Lexicon_Ovn3_Fordonshanteringssystem.Vehicles;
+﻿//funktion för att visa fordon har jag inte här utan metoden MenuListVehicles i Program.cs resp Stats() i Vehicle.cs
+
+using Lexicon_Ovn3_Fordonshanteringssystem.Vehicles;
 
 namespace Lexicon_Ovn3_Fordonshanteringssystem
 {
@@ -25,28 +27,28 @@ namespace Lexicon_Ovn3_Fordonshanteringssystem
                 double weight = double.Parse(Console.ReadLine());
                 switch (fordonsTyp)
                 {
-                    case 1:
+                    case 1: //Car
                         {
                             Console.Write("Antal dörrar: ");
                             int numberOfDoors = int.Parse(Console.ReadLine());
                             var vehicle = new Car(brand, model, year, weight, numberOfDoors);
                             return vehicle;
                         }
-                    case 2:
+                    case 2: //Electric Scooter
                         {
                             Console.Write("Batterikapacitet: ");
                             int batteryRange = int.Parse(Console.ReadLine());
                             var vehicle = new ElectricScooter(brand, model, year, weight, batteryRange);
                             return vehicle;
                         }
-                    case 3:
+                    case 3: //Motorcycle
                         {
                             Console.Write("Sidovagn (true/false): ");
                             bool hasSidecar = bool.Parse(Console.ReadLine());
                             var vehicle = new Motorcycle(brand, model, year, weight, hasSidecar);
                             return vehicle;
                         }
-                    case 4:
+                    case 4: //Truck
                         {
                             Console.Write("Lastkapacitet: ");
                             int cargoCapacity = int.Parse(Console.ReadLine());
